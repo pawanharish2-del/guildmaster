@@ -90,12 +90,9 @@ export default function usePageAnimations() {
           .to('#preloader', {
             yPercent: -100,
             duration: 1.2,
-            ease: 'power4.inOut',
-            onComplete: () => {
-              const pre = document.getElementById('preloader');
-              if (pre) pre.style.pointerEvents = 'none';
-            },
-          });
+            ease: 'power4.inOut'
+          })
+          .to('#preloader', { display: 'none', pointerEvents: 'none', duration: 0.3 });
 
         if (isHome) {
           // Home hero: video scale-in, headline char reveal, image + buttons + scroll cue.

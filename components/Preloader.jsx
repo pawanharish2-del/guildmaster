@@ -31,9 +31,8 @@ export default function Preloader() {
   useEffect(() => {
     if (!show) return;
     const t = setTimeout(() => {
-      const pre = document.getElementById('preloader');
-      if (pre) pre.style.pointerEvents = 'none';
-    }, 6000);
+      setShow(false);
+    }, 3500); // 3.5s max wait
     return () => clearTimeout(t);
   }, [show]);
 
