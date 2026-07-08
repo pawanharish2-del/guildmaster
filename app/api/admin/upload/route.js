@@ -2,8 +2,6 @@ import { put } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { SESSION_COOKIE, verifySessionToken } from '@/lib/auth';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
 
 export const runtime = 'nodejs';
 
@@ -26,33 +24,15 @@ export async function POST(request) {
       return NextResponse.json({ error: 'No file found in payload.' }, { status: 400 });
     }
 
-    const isDev = process.env.NODE_ENV === 'development';
-    const hasBlobToken = !!process.env.BLOB_READ_WRITE_TOKEN;
+    // 3. Upload directly to Vercel Blob Storage
+    const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+    const filename = `${Date.now()}-${sanitizedName}`;
 
-    // 3. Hybrid Environment Detection
-    if (isDev || !hasBlobToken) {
-      // Local Development Mode
-      const buffer = Buffer.from(await file.arrayBuffer());
-      const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-      const filename = `${Date.now()}-${sanitizedName}`;
-      const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-      
-      try {
-        await mkdir(uploadDir, { recursive: true });
-      } catch (err) {
-        // Ignore if directory already exists
-      }
-      
-      await writeFile(path.join(uploadDir, filename), buffer);
-      
-      return NextResponse.json({ url: `/uploads/${filename}` });
-    } else {
-      // Production Mode (Vercel Blob Storage)
-      const blob = await put(file.name, file, {
-        access: 'public',
-      });
-      return NextResponse.json({ url: blob.url });
-    }
+    const blob = await put(filename, file, {
+      access: 'public',
+    });
+
+    return NextResponse.json({ url: blob.url });
   } catch (error) {
     console.error('Upload failed:', error);
     return NextResponse.json({ error: 'Image upload failed on the server.' }, { status: 500 });
