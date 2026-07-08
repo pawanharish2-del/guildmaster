@@ -107,15 +107,23 @@ export default function usePageAnimations() {
           if (firstChars.length) {
             tl.to(firstChars, { y: '0%', stagger: 0.05, duration: 1.2, ease: 'power4.out' }, '-=1');
           }
-          tl.fromTo('.image-reveal-anim', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.5')
-            .fromTo('#hero-buttons', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1 }, '-=0.5')
-            .to('#hero-scroll', { opacity: 1, duration: 1 }, '-=0.5');
+          if (document.querySelector('.image-reveal-anim')) {
+            tl.fromTo('.image-reveal-anim', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.5');
+          }
+          if (document.querySelector('#hero-buttons')) {
+            tl.fromTo('#hero-buttons', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1 }, '-=0.5');
+          }
+          if (document.querySelector('#hero-scroll')) {
+            tl.to('#hero-scroll', { opacity: 1, duration: 1 }, '-=0.5');
+          }
         } else {
           // Interior pages: reveal the page heading + any masked images.
           if (firstChars.length) {
             tl.to(firstChars, { y: '0%', stagger: 0.05, duration: 1.2, ease: 'power4.out' }, '-=0.5');
           }
-          tl.fromTo('.image-reveal-anim', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.5');
+          if (document.querySelector('.image-reveal-anim')) {
+            tl.fromTo('.image-reveal-anim', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.5');
+          }
         }
       } else {
         // Client-side navigation: no preloader. Reveal the incoming heading and,
@@ -124,9 +132,15 @@ export default function usePageAnimations() {
           gsap.to(firstChars, { y: '0%', stagger: 0.03, duration: 0.9, ease: 'power3.out' });
         }
         if (isHome) {
-          gsap.to('#hero-buttons', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' });
-          gsap.to('#hero-scroll', { opacity: 1, duration: 0.8, ease: 'power2.out' });
-          gsap.fromTo('#hero-vid', { scale: 1.05 }, { scale: 1, duration: 1.2, ease: 'power3.out' });
+          if (document.querySelector('#hero-buttons')) {
+            gsap.to('#hero-buttons', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' });
+          }
+          if (document.querySelector('#hero-scroll')) {
+            gsap.to('#hero-scroll', { opacity: 1, duration: 0.8, ease: 'power2.out' });
+          }
+          if (document.querySelector('#hero-vid')) {
+            gsap.fromTo('#hero-vid', { scale: 1.05 }, { scale: 1, duration: 1.2, ease: 'power3.out' });
+          }
         }
       }
 
