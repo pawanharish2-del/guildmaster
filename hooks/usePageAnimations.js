@@ -26,12 +26,10 @@ export default function usePageAnimations() {
   useEffect(() => {
     let ctx;
     let refreshId;
+    let hydrationTimer;
     const splitInstances = [];
-
-    // Delay GSAP and SplitType initialization to guarantee Next.js has fully
-    // hydrated the React fiber tree. Mutating the DOM (adding wrapper divs)
-    // synchronously during hydration causes fatal React Node errors.
-    const hydrationTimer = setTimeout(() => {
+    
+    const initAnimation = () => {
       gsap.registerPlugin(ScrollTrigger);
 
       const isFirstLoad = !hasPlayedIntro;
@@ -268,14 +266,23 @@ export default function usePageAnimations() {
           },
         });
       }
-    }); // End of gsap.context
+      }); // End of gsap.context
 
-    // Recalculate trigger positions once fonts/layout settle.
-    refreshId = window.requestAnimationFrame(() => ScrollTrigger.refresh());
-    }, 10); // End of setTimeout
+      // Recalculate trigger positions once fonts/layout settle.
+      refreshId = window.requestAnimationFrame(() => ScrollTrigger.refresh());
+    };
+
+    if (document.readyState === 'complete') {
+      // If already fully loaded, run immediately on the next tick
+      hydrationTimer = setTimeout(initAnimation, 10);
+    } else {
+      // Otherwise, wait for the window load event to ensure all resources are ready
+      window.addEventListener('load', initAnimation);
+    }
 
     return () => {
       clearTimeout(hydrationTimer);
+      window.removeEventListener('load', initAnimation);
       if (refreshId) window.cancelAnimationFrame(refreshId);
       magneticCleanupRef.current.forEach((fn) => fn());
       magneticCleanupRef.current = [];

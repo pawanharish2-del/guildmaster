@@ -41,7 +41,7 @@ export default function SiteChrome({ children }) {
       {mounted && <RouterLogger />}
       {mounted && <AnimationController />}
       {mounted && <FlightCursor />}
-      {mounted && <Preloader />}
+      <Preloader />
       <Navbar />
 
       <div id="smooth-wrapper">
