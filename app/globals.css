@@ -1,0 +1,307 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GUILDMASTER — Global Styles
+   Ported verbatim from the original static <style> block. Values, selectors and
+   z-indexes are intentionally unchanged to preserve a pixel-perfect replica.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Font tokens — map the self-hosted @fontsource variable families (imported in
+   app/layout.js) onto the CSS variables the Tailwind `sans`/`serif` tokens read.
+   Same typefaces the source pulled from Google Fonts, now served locally. */
+:root {
+  --font-inter: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-playfair: 'Playfair Display Variable', 'Playfair Display', Georgia, serif;
+}
+
+/* Base & Resets */
+body {
+  background-color: #050505;
+  color: #ffffff;
+  overflow-x: hidden;
+  
+}
+
+
+html, body, *, button, a, input, textarea {
+  cursor: none !important;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+body.cursor-hover .cursor-outline {
+  width: 55px;
+  height: 55px;
+  border-color: #D4AF37;
+  background-color: rgba(212, 175, 55, 0.1);
+  transition: width 0.2s, height 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+
+
+::selection {
+  background-color: #d4af37;
+  color: #000;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Typography specifics */
+.char {
+  transform: translateY(110%);
+}
+.word {
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+
+/* Glassmorphism */
+.glass {
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Utilities */
+.clip-mask {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+.image-reveal {
+  clip-path: inset(100% 0 0 0);
+}
+
+/* Magnetic Button */
+.magnetic-btn {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  transition: border-color 0.4s ease;
+}
+.magnetic-btn::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #d4af37;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: -1;
+  border-radius: 50% 50% 0 0;
+}
+.magnetic-btn:hover::before {
+  transform: translateY(-100%);
+  border-radius: 0;
+}
+.magnetic-btn:hover {
+  color: #000;
+  border-color: #d4af37;
+}
+
+/* Loader */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #050505;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3D Canvas Env */
+#webgl-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Track Styles */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Accessibility quality-floor (additive, non-visual). Keyboard focus is made
+   visible, and users who prefer reduced motion get the fully-revealed layout
+   without the GSAP transforms fighting them.
+   ─────────────────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .char {
+    transform: none !important;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Blog article body — styles the admin-authored rich HTML in the brand voice.
+   Scoped to `.article-body` so it never leaks into the marketing pages.
+   ─────────────────────────────────────────────────────────────────────────── */
+.article-body > * + * {
+  margin-top: 1.5rem;
+}
+.article-body h2 {
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #fff;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+.article-body h3 {
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+.article-body p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+}
+.article-body a {
+  color: #d4af37;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.article-body a:hover {
+  color: #e7c873;
+}
+.article-body ul,
+.article-body ol {
+  padding-left: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.article-body ul {
+  list-style: disc;
+}
+.article-body ol {
+  list-style: decimal;
+}
+.article-body li {
+  margin-top: 0.5rem;
+  line-height: 1.7;
+}
+.article-body blockquote {
+  border-left: 2px solid #d4af37;
+  padding-left: 1.5rem;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-style: italic;
+  color: rgba(212, 175, 55, 0.9);
+  font-size: 1.25rem;
+}
+.article-body img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.125rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.article-body code {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+}
+.article-body pre {
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.25rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+}
+.article-body pre code {
+  background: transparent;
+  padding: 0;
+}
+.article-body hr {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2.5rem 0;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Admin shell — the marketing custom cursor is not rendered under /admin, so
+   restore the native cursor there (the global `body { cursor: none }` would
+   otherwise leave the dashboard with no pointer).
+   ─────────────────────────────────────────────────────────────────────────── */
+.admin-shell,
+.admin-shell * {
+  cursor: auto !important;
+}
+.admin-shell a,
+.admin-shell button,
+.admin-shell [role='button'],
+.admin-shell label[for] {
+  cursor: pointer !important;
+}
+.admin-shell textarea {
+  cursor: text !important;
+}
+
+body.hide-native-cursor,
+body.hide-native-cursor * {
+  cursor: none !important;
+}
+
+/* Hide native browser CC/subtitles on videos */
+video::-webkit-media-text-track-display {
+  display: none !important;
+}
+
+video::cue {
+  display: none !important;
+  color: transparent !important;
+  background-color: transparent !important;
+}
