@@ -11,7 +11,7 @@ export default function ContactPage() {
   return (
     <>
       {/* HERO / CONTACT */}
-      <section className="relative min-h-[80vh] w-full flex items-center justify-center overflow-hidden bg-bgSec">
+      <section className="relative min-h-[60vh] md:min-h-[80vh] w-full flex items-center justify-center overflow-hidden bg-bgSec">
         <div className="absolute inset-0 bg-luxury-gradient z-20" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

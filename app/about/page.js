@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden border-b border-white/5 bg-bgSec">
+      <section className="relative w-full flex items-center justify-center overflow-hidden border-b border-white/5 bg-bgSec">
         <div className="absolute inset-0 bg-luxury-gradient z-20" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -19,14 +19,14 @@ export default function AboutPage() {
           className="absolute inset-0 w-full h-full object-cover z-10 opacity-40 mix-blend-screen"
           alt="Hero Background"
         />
-        <div className="relative z-20 text-center flex flex-col items-center mt-20 px-6">
+        <div className="relative z-20 text-center flex flex-col items-center pt-24 pb-12 md:pt-40 md:pb-24 px-6 w-full">
           <h1 className="font-serif text-5xl md:text-7xl split-text mb-4 text-white">About Us</h1>
           <h4 className="text-gold text-lg font-serif italic mb-12 text-reveal">Art of the Aircraft.</h4>
         </div>
       </section>
 
       {/* MAIN CONTENT */}
-      <section className="py-20 bg-bgBase relative z-30">
+      <section className="pt-3 pb-8 md:py-20 bg-bgBase relative z-30">
         <div className="max-w-[1000px] mx-auto px-6 md:px-12 text-reveal">
           <p className="text-white/80 text-lg leading-relaxed mb-8">
             At Guildmaster, we are driven by a vision to redefine the future of personal and light aviation through innovation, precision engineering, and advanced aerospace technology. As a new-age aviation company, our primary focus is on designing and manufacturing state-of-the-art 2-seater and 4-seater aircraft that combine safety, performance, and efficiency.

@@ -11,7 +11,7 @@ export default function CustomerPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden border-b border-white/5 bg-bgSec">
+      <section className="relative w-full flex items-center justify-center overflow-hidden border-b border-white/5 bg-bgSec">
         <div className="absolute inset-0 bg-luxury-gradient z-20" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -19,14 +19,14 @@ export default function CustomerPage() {
           className="absolute inset-0 w-full h-full object-cover z-10 opacity-40 mix-blend-screen"
           alt="Hero Background"
         />
-        <div className="relative z-20 text-center flex flex-col items-center mt-20 px-6">
+        <div className="relative z-20 text-center flex flex-col items-center pt-24 pb-12 md:pt-40 md:pb-24 px-6 w-full">
           <h1 className="font-serif text-5xl md:text-7xl split-text mb-4 text-white">Our Customers</h1>
           <h4 className="text-gold text-xs uppercase tracking-[0.3em] mb-12 text-reveal">Serving a wide range of industries</h4>
         </div>
       </section>
 
       {/* CUSTOMERS MAIN */}
-      <section className="py-20 bg-bgBase relative z-30">
+      <section className="pt-3 pb-8 md:py-20 bg-bgBase relative z-30">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <p className="text-white/80 text-lg leading-relaxed mb-16 text-center max-w-4xl mx-auto text-reveal">
             Guildmaster&apos;s advanced 2-seater and 4-seater aircraft are designed to serve a wide range of customers across the aviation industry. At Guildmaster, we strive to build long-term partnerships with our customers by delivering safe, technologically advanced, and reliable aircraft that meet the evolving needs of modern aviation.

@@ -66,7 +66,7 @@ export default async function BlogDetailPage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(schema)} />
 
       {/* ARTICLE HERO */}
-      <section className="relative min-h-[60vh] w-full flex items-end overflow-hidden border-b border-white/5 bg-bgSec">
+      <section className="relative min-h-[45vh] md:min-h-[70vh] w-full flex items-end overflow-hidden border-b border-white/5 bg-bgSec">
         <div className="absolute inset-0 bg-luxury-gradient z-20" />
         {post.coverImage ? (
           <Image
@@ -102,7 +102,7 @@ export default async function BlogDetailPage({ params }) {
       </section>
 
       {/* SUMMARY (AEO snippet) */}
-      <section className="pt-16 bg-bgBase relative z-30">
+      <section className="pt-8 md:pt-16 bg-bgBase relative z-30">
         <div className="max-w-[820px] mx-auto px-6 md:px-12">
           <p className="text-gold/90 font-serif italic text-xl md:text-2xl leading-relaxed border-l-2 border-gold pl-6 text-reveal">
             {post.summary}

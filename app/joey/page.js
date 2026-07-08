@@ -49,7 +49,7 @@ export default function JoeyPage() {
         )}
       />
 
-      <div className="pt-32" />
+      <div className="pt-24 md:pt-32" />
       {/* SECTION AIRCRAFT 1: Joey */}
       <section id="aircraft-a-2" className="py-4 bg-bgBase relative z-30 border-t border-white/5">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12">
