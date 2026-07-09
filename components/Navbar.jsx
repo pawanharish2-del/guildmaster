@@ -28,7 +28,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 w-full z-50 glass border-b-0 px-8 py-5 flex justify-between items-center mix-blend-difference"
+        className="fixed top-0 left-0 w-full z-50 glass border-b-0 px-8 py-5 flex justify-between items-center"
         id="navbar"
       >
         <Link href="/" className="hover-trigger flex items-center gap-4">
@@ -40,15 +40,15 @@ export default function Navbar() {
           />
         </Link>
 
-        <div className="hidden lg:flex gap-10 font-sans text-[11px] uppercase tracking-[0.25em] text-white/80 items-center">
-          <Link href="/" className="hover-trigger hover:text-gold transition-colors duration-300">
+        <div className="hidden lg:flex gap-10 font-sans text-[11px] uppercase tracking-[0.25em] text-white items-center">
+          <Link href="/" className="hover-trigger !text-white hover:text-gold transition-colors duration-300">
             Home
           </Link>
 
           <div className="group relative py-4">
             <Link
               href="/#aircraft-overview"
-              className="hover-trigger hover:text-gold transition-colors duration-300"
+              className="hover-trigger !text-white hover:text-gold transition-colors duration-300"
             >
               Models <i className="fa-solid fa-chevron-down ml-1 text-[8px]" />
             </Link>
@@ -79,19 +79,19 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Link href="/about" className="hover-trigger hover:text-gold transition-colors duration-300">
+          <Link href="/about" className="hover-trigger !text-white hover:text-gold transition-colors duration-300">
             About
           </Link>
-          <Link href="/blogs" className="hover-trigger hover:text-gold transition-colors duration-300">
+          <Link href="/blogs" className="hover-trigger !text-white hover:text-gold transition-colors duration-300">
             Blog
           </Link>
-          <Link href="/investors" className="hover-trigger hover:text-gold transition-colors duration-300">
+          <Link href="/investors" className="hover-trigger !text-white hover:text-gold transition-colors duration-300">
             Investors
           </Link>
-          <Link href="/contact" className="hover-trigger hover:text-gold transition-colors duration-300">
+          <Link href="/contact" className="hover-trigger !text-white hover:text-gold transition-colors duration-300">
             Contact
           </Link>
-          <Link href="/customer" className="hover-trigger hover:text-gold transition-colors duration-300">
+          <Link href="/customer" className="hover-trigger !text-white hover:text-gold transition-colors duration-300">
             Customer
           </Link>
         </div>
@@ -127,39 +127,39 @@ export default function Navbar() {
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
-        <ul className="flex flex-col gap-10 text-center font-sans text-sm uppercase tracking-[0.4em] text-white/80">
+        <ul className="flex flex-col gap-10 text-center font-sans text-sm uppercase tracking-[0.4em] text-white">
           <li>
-            <Link href="/" onClick={closeMenu} className="mobile-link hover:text-gold transition-colors">
+            <Link href="/" onClick={closeMenu} className="mobile-link !text-white hover:text-gold transition-colors">
               Home
             </Link>
           </li>
           <li>
-            <Link href="/#aircraft-overview" onClick={closeMenu} className="mobile-link hover:text-gold transition-colors">
+            <Link href="/#aircraft-overview" onClick={closeMenu} className="mobile-link !text-white hover:text-gold transition-colors">
               Models
             </Link>
           </li>
           <li>
-            <Link href="/about" onClick={closeMenu} className="mobile-link hover:text-gold transition-colors">
+            <Link href="/about" onClick={closeMenu} className="mobile-link !text-white hover:text-gold transition-colors">
               About
             </Link>
           </li>
           <li>
-            <Link href="/blogs" onClick={closeMenu} className="mobile-link hover:text-gold transition-colors">
+            <Link href="/blogs" onClick={closeMenu} className="mobile-link !text-white hover:text-gold transition-colors">
               Blog
             </Link>
           </li>
           <li>
-            <Link href="/investors" onClick={closeMenu} className="mobile-link hover:text-gold transition-colors">
+            <Link href="/investors" onClick={closeMenu} className="mobile-link !text-white hover:text-gold transition-colors">
               Investors
             </Link>
           </li>
           <li>
-            <Link href="/customer" onClick={closeMenu} className="mobile-link hover:text-gold transition-colors">
+            <Link href="/customer" onClick={closeMenu} className="mobile-link !text-white hover:text-gold transition-colors">
               Customer
             </Link>
           </li>
           <li>
-            <Link href="/contact" onClick={closeMenu} className="mobile-link hover:text-gold transition-colors">
+            <Link href="/contact" onClick={closeMenu} className="mobile-link !text-white hover:text-gold transition-colors">
               Contact
             </Link>
           </li>
