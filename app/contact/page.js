@@ -1,9 +1,9 @@
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Contact Us',
+  title: 'Contact Guildmaster Aviation | Sales & Factory Inquiries',
   description:
-    'Contact GUILDMASTER. Make an inquiry about the Joey and Boon light aircraft, or visit our factory at Aerospace Park, Kishangarh, Rajasthan. Email hi@guildmaster.in.',
+    'Get in touch with Guildmaster. Visit our manufacturing facility at Aerospace Park, Kishangarh, or contact our team to inquire about our premium aircraft.',
   path: '/contact',
 });
 

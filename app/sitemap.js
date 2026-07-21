@@ -9,12 +9,12 @@ export const dynamic = 'force-dynamic';
 const STATIC_ROUTES = [
   { path: '/', priority: 1.0, changeFrequency: 'monthly' },
   { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
-  { path: '/boon', priority: 0.9, changeFrequency: 'monthly' },
-  { path: '/joey', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/models/boon', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/models/joey', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/customer', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/investors', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/contact', priority: 0.6, changeFrequency: 'yearly' },
-  { path: '/blogs', priority: 0.8, changeFrequency: 'weekly' },
+  { path: '/blog', priority: 0.8, changeFrequency: 'weekly' },
 ];
 
 export default async function sitemap() {
@@ -31,7 +31,7 @@ export default async function sitemap() {
   try {
     const slugs = await getAllSlugs();
     blogEntries = slugs.map((entry) => ({
-      url: `${SITE_URL}/blogs/${entry.slug}`,
+      url: `${SITE_URL}/blog/${entry.slug}`,
       lastModified: entry.updatedAt ? new Date(entry.updatedAt) : now,
       changeFrequency: 'monthly',
       priority: 0.6,

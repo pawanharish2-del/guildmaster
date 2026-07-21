@@ -1,10 +1,10 @@
 import { buildMetadata, aircraftSchema, jsonLd } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Joey — 2-Seater Light Aircraft',
+  title: 'Joey 2-Seater Aircraft | High-Performance Carbon Fiber Plane',
   description:
-    'The Joey: a 2-seat light aircraft designed for precision. State-of-the-art carbon fiber construction, Rotax 916 iS engine, Garmin G3X Touch avionics, 1,200 nm range and 210 kts top speed.',
-  path: '/joey',
+    'Explore the Joey by Guildmaster. A premium 2-seater aircraft featuring a Rotax 916 iS engine, 210 kts top speed, and Garmin G3X Touch avionics.',
+  path: '/models/joey',
   image: '/images/aircraft-a-2.jpg',
 });
 

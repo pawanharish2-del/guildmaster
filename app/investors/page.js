@@ -1,9 +1,9 @@
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'For Investors',
+  title: 'Investor Relations | Partner with Guildmaster Aviation',
   description:
-    'Invest in GUILDMASTER — the art of the aircraft. Partner in a vision to establish India as a global hub for advanced light aircraft manufacturing, with scalable revenue across production, customization, maintenance and training.',
+    'Explore investment opportunities with Guildmaster Aviation. Join us in shaping the future of high-performance, carbon fiber aerospace manufacturing.',
   path: '/investors',
 });
 

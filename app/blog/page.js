@@ -6,10 +6,10 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export const metadata = buildMetadata({
-  title: 'Journal',
+  title: 'Aviation Insights & Guildmaster News | The Pilot\'s Blog',
   description:
-    'The Guildmaster Journal — dispatches on light aircraft engineering, design, avionics and the craft of flight from the makers of the Joey and Boon.',
-  path: '/blogs',
+    'Stay updated with the latest in aerospace engineering, pilot experiences, and Guildmaster Aviation news. Read stories from our growing pilot community.',
+  path: '/blog',
 });
 
 function formatDate(iso) {

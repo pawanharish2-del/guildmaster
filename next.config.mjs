@@ -14,6 +14,30 @@ const nextConfig = {
   // Mongoose ships optional native deps that must not be bundled for the browser
   // or traced into the serverless build graph.
   serverExternalPackages: ['mongoose'],
+  async redirects() {
+    return [
+      {
+        source: '/joey',
+        destination: '/models/joey',
+        permanent: true,
+      },
+      {
+        source: '/boon',
+        destination: '/models/boon',
+        permanent: true,
+      },
+      {
+        source: '/blogs',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blogs/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
+    ]
+  },
 };
 
 export default nextConfig;

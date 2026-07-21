@@ -38,13 +38,13 @@ export default function Footer() {
             <h6 className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 text-white/40">Aircraft</h6>
             <ul className="space-y-4 text-white/80 text-xs font-sans tracking-[0.15em] uppercase">
               <li>
-                <Link href="/joey" className="hover-trigger hover:text-gold transition-colors">
+                <Link href="/models/joey" className="hover-trigger hover:text-gold transition-colors">
                   Joey
                 </Link>
               </li>
               <li />
               <li>
-                <Link href="/boon" className="hover-trigger hover:text-gold transition-colors">
+                <Link href="/models/boon" className="hover-trigger hover:text-gold transition-colors">
                   Boon
                 </Link>
               </li>

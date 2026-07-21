@@ -30,12 +30,12 @@ export async function generateMetadata({ params }) {
     post = null;
   }
   if (!post) {
-    return buildMetadata({ title: 'Article Not Found', path: `/blogs/${slug}` });
+    return buildMetadata({ title: 'Article Not Found', path: `/blog/${slug}` });
   }
   return buildMetadata({
     title: post.title,
     description: post.summary,
-    path: `/blogs/${post.slug}`,
+    path: `/blog/${post.slug}`,
     image: post.coverImage || undefined,
     type: 'article',
   });
@@ -87,7 +87,7 @@ export default async function BlogDetailPage({ params }) {
         )}
         <div className="relative z-20 max-w-[900px] mx-auto px-6 md:px-12 pb-16 pt-40 w-full">
           <Link
-            href="/blogs"
+            href="/blog"
             className="hover-trigger text-[10px] uppercase tracking-[0.3em] text-gold hover:text-goldLight transition-colors inline-block mb-6"
           >
             <i className="fa-solid fa-arrow-left mr-2" /> Back to Journal
@@ -133,13 +133,13 @@ export default async function BlogDetailPage({ params }) {
         />
         <div className="max-w-[820px] mx-auto px-6 md:px-12 mt-16 pt-10 border-t border-white/10 flex items-center justify-between">
           <Link
-            href="/blogs"
+            href="/blog"
             className="hover-trigger magnetic-btn px-8 py-4 rounded-full border border-gold/50 text-xs uppercase tracking-[0.2em] transition-colors"
           >
             All Articles
           </Link>
           <a
-            href={`${SITE_URL}/blogs/${post.slug}`}
+            href={`${SITE_URL}/blog/${post.slug}`}
             className="hover-trigger text-[10px] uppercase tracking-[0.2em] text-white/40 hover:text-gold transition-colors"
           >
             Share this dispatch

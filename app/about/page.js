@@ -1,9 +1,9 @@
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'About Us',
+  title: 'About Guildmaster | Aerospace Engineering & Innovation',
   description:
-    'GUILDMASTER — the art of the aircraft. A new-age aviation company designing and manufacturing advanced 2-seater and 4-seater aircraft that combine safety, performance and efficiency.',
+    'Based in Kishangarh, Rajasthan, Guildmaster designs, builds, and tests premium aircraft in-house. Learn about our passion for aerospace engineering.',
   path: '/about',
 });
 

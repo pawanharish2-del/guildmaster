@@ -53,7 +53,7 @@ export default function Navbar() {
               Models <i className="fa-solid fa-chevron-down ml-1 text-[8px]" />
             </Link>
             <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-[600px] bg-bgSec/95 backdrop-blur-xl border border-white/10 rounded-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 grid grid-cols-2 gap-6 p-8 pointer-events-none group-hover:pointer-events-auto shadow-2xl">
-              <Link href="/joey" className="flex flex-col gap-3 hover-trigger group/card">
+              <Link href="/models/joey" className="flex flex-col gap-3 hover-trigger group/card">
                 <div className="relative overflow-hidden rounded-sm">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -65,7 +65,7 @@ export default function Navbar() {
                 <span className="text-gold text-[10px] tracking-widest uppercase">Joey</span>
               </Link>
 
-              <Link href="/boon" className="flex flex-col gap-3 hover-trigger group/card">
+              <Link href="/models/boon" className="flex flex-col gap-3 hover-trigger group/card">
                 <div className="relative overflow-hidden rounded-sm">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -82,7 +82,7 @@ export default function Navbar() {
           <Link href="/about" className="hover-trigger !text-white hover:text-gold transition-colors duration-300">
             About
           </Link>
-          <Link href="/blogs" className="hover-trigger !text-white hover:text-gold transition-colors duration-300">
+          <Link href="/blog" className="hover-trigger !text-white hover:text-gold transition-colors duration-300">
             Blog
           </Link>
           <Link href="/investors" className="hover-trigger !text-white hover:text-gold transition-colors duration-300">
@@ -144,7 +144,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="/blogs" onClick={closeMenu} className="mobile-link !text-white hover:text-gold transition-colors">
+            <Link href="/blog" onClick={closeMenu} className="mobile-link !text-white hover:text-gold transition-colors">
               Blog
             </Link>
           </li>

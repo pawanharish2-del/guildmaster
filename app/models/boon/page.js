@@ -1,10 +1,10 @@
 import { buildMetadata, aircraftSchema, jsonLd } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Boon — 4-Seater Light Aircraft',
+  title: 'Boon 4-Seater Aircraft | Luxury Group Aviation',
   description:
-    'The Boon: a 4-seat light aircraft where space meets speed. Carbon fiber cabin, Continental CD-300 engine, Garmin G1000 NXi avionics, 1,500 nm range and 220 kts top speed.',
-  path: '/boon',
+    'The Boon 4-seater aircraft delivers spacious capability, Continental CD-300 power, and a 1,500 nm range for uncompromising group travel and performance.',
+  path: '/models/boon',
   image: '/images/aircraft-a-4.jpg',
 });
 
