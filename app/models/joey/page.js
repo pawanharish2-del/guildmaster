@@ -1,9 +1,9 @@
 import { buildMetadata, aircraftSchema, jsonLd } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Joey 2-Seater Aircraft | High-Performance Carbon Fiber Plane',
+  title: 'The Joey: 2 Seater Aircraft For Sale Jaipur | Guildmaster',
   description:
-    'Explore the Joey by Guildmaster. A premium 2-seater aircraft featuring a Rotax 916 iS engine, 210 kts top speed, and Garmin G3X Touch avionics.',
+    'Looking to buy private aircraft in Jaipur? The Joey is a premium 2-seater carbon fiber aircraft with a Rotax 916 iS engine, perfect for local and regional flights.',
   path: '/models/joey',
   image: '/images/aircraft-a-2.jpg',
 });

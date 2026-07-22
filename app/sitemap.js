@@ -15,6 +15,8 @@ const STATIC_ROUTES = [
   { path: '/investors', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/contact', priority: 0.6, changeFrequency: 'yearly' },
   { path: '/blog', priority: 0.8, changeFrequency: 'weekly' },
+  { path: '/locations/jaipur', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/locations/rajasthan', priority: 0.7, changeFrequency: 'monthly' },
 ];
 
 export default async function sitemap() {

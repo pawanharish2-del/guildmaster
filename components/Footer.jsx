@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-bgBase pt-16 pb-10 border-t border-white/10">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 mb-16">
-          <div className="md:col-span-4">
+          <div className="md:col-span-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logonew.png"
@@ -78,7 +78,23 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-4 border-t md:border-t-0 md:border-l border-white/10 pt-8 md:pt-0 md:pl-12">
+          <div className="md:col-span-2">
+            <h6 className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 text-white/40">Areas Served</h6>
+            <ul className="space-y-4 text-white/80 text-xs font-sans tracking-[0.15em] uppercase">
+              <li>
+                <a href="/locations/jaipur" className="hover-trigger hover:text-gold transition-colors">
+                  Jaipur
+                </a>
+              </li>
+              <li>
+                <a href="/locations/rajasthan" className="hover-trigger hover:text-gold transition-colors">
+                  Rajasthan
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-3 border-t md:border-t-0 md:border-l border-white/10 pt-8 md:pt-0 md:pl-12">
             <h6 className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 text-white/40">
               Subscribe to our Newsletter
             </h6>

@@ -1,9 +1,9 @@
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'About Guildmaster | Aerospace Engineering & Innovation',
+  title: 'About Guildmaster | Aircraft Manufacturers Near Jaipur',
   description:
-    'Based in Kishangarh, Rajasthan, Guildmaster designs, builds, and tests premium aircraft in-house. Learn about our passion for aerospace engineering.',
+    'Based in Kishangarh, Rajasthan, Guildmaster is a leading aircraft manufacturer near Jaipur designing, building, and testing premium carbon fiber aircraft in-house.',
   path: '/about',
 });
 

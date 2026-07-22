@@ -1,9 +1,9 @@
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Contact Guildmaster Aviation | Sales & Factory Inquiries',
+  title: 'Contact Guildmaster | Aircraft Sales Udaipur & Jodhpur',
   description:
-    'Get in touch with Guildmaster. Visit our manufacturing facility at Aerospace Park, Kishangarh, or contact our team to inquire about our premium aircraft.',
+    'Get in touch with Guildmaster for aircraft sales in Udaipur or private plane dealers in Jodhpur. Visit our manufacturing facility at Aerospace Park, Kishangarh.',
   path: '/contact',
 });
 

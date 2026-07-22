@@ -1,9 +1,9 @@
 import { buildMetadata, aircraftSchema, jsonLd } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Boon 4-Seater Aircraft | Luxury Group Aviation',
+  title: 'The Boon: 4 Seater Luxury Aircraft For Sale Rajasthan',
   description:
-    'The Boon 4-seater aircraft delivers spacious capability, Continental CD-300 power, and a 1,500 nm range for uncompromising group travel and performance.',
+    'Want to buy a 4 seater plane in Jaipur? The Boon is a premium cross-country aircraft with a Continental CD-300 engine and luxurious group travel cabin.',
   path: '/models/boon',
   image: '/images/aircraft-a-4.jpg',
 });
