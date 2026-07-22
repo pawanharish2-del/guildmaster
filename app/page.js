@@ -5,7 +5,7 @@ import HeroVideo from '@/components/HeroVideo';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Premium Carbon Fiber Aircraft Manufacturer Rajasthan | Guildmaster',
+  title: 'Buy Luxury Private Aircraft in India | Guildmaster Aviation',
   description:
     'Guildmaster Aviation is among the top private aircraft manufacturers in Rajasthan. We design luxury private planes. Buy a small plane in Rajasthan tailored for you.',
   path: '/',
@@ -126,7 +126,7 @@ export default function HomePage() {
           <p className="text-muted max-w-2xl mx-auto text-lg font-light leading-relaxed text-reveal">
             Every aspect of our aircraft is carefully considered.<br />
             We design, build and test almost everything ourselves.<br />
-            Not because we have to, but because we want to.<br />
+            For those looking to <strong className="text-gold font-normal">buy luxury private aircraft in India</strong>, we offer an uncompromising experience.<br />
             <span className="text-white font-serif italic mt-4 block">Our aircraft. Our passion.</span>
           </p>
         </div>
