@@ -5,9 +5,9 @@ import HeroVideo from '@/components/HeroVideo';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Buy Luxury Private Aircraft in India | Guildmaster Aviation',
+  title: 'Buy Luxury 2 Seater & 4 Seater Aircraft in India | Guildmaster',
   description:
-    'Guildmaster Aviation is among the top private aircraft manufacturers in Rajasthan. We design luxury private planes. Buy a small plane in Rajasthan tailored for you.',
+    'Looking to buy 2 seater aircraft in India or buy 4 seater aircraft in India? Guildmaster Aviation is the premier private aircraft manufacturer offering premium carbon fiber planes.',
   path: '/',
 });
 
