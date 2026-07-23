@@ -76,7 +76,7 @@ export default function HomePage() {
                 />
               </div>
               <h3 className="font-serif text-2xl text-white mb-2">Joey</h3>
-              <p className="text-sm text-muted mb-6 flex-grow">Designed for precision and uncompromised performance.</p>
+              <p className="text-sm text-muted mb-6 flex-grow">Designed for precision and uncompromised performance. The premier choice if you are looking to <strong className="text-gold font-normal">buy 2 seater aircraft in India</strong>.</p>
               <div className="grid grid-cols-2 gap-4 text-xs font-sans text-white/80 mb-8 border-y border-white/10 py-4">
                 <div><span className="block text-[10px] uppercase tracking-widest text-gold mb-1">Top Speed</span>210 kts</div>
                 <div><span className="block text-[10px] uppercase tracking-widest text-gold mb-1">Seats</span>2</div>
@@ -101,7 +101,7 @@ export default function HomePage() {
                 />
               </div>
               <h3 className="font-serif text-2xl text-white mb-2">Boon</h3>
-              <p className="text-sm text-muted mb-6 flex-grow">Spacious capability without sacrificing agility or speed.</p>
+              <p className="text-sm text-muted mb-6 flex-grow">Spacious capability without sacrificing agility or speed. The ultimate way to <strong className="text-gold font-normal">buy 4 seater aircraft in India</strong>.</p>
               <div className="grid grid-cols-2 gap-4 text-xs font-sans text-white/80 mb-8 border-y border-white/10 py-4">
                 <div><span className="block text-[10px] uppercase tracking-widest text-gold mb-1">Top Speed</span>220 kts</div>
                 <div><span className="block text-[10px] uppercase tracking-widest text-gold mb-1">Seats</span>4</div>
