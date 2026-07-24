@@ -17,6 +17,14 @@ const STATIC_ROUTES = [
   { path: '/blog', priority: 0.8, changeFrequency: 'weekly' },
   { path: '/locations/jaipur', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/locations/rajasthan', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/locations/ahmedabad', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/locations/bengaluru', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/locations/chennai', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/locations/delhi', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/locations/hyderabad', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/locations/kolkata', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/locations/mumbai', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/locations/pune', priority: 0.7, changeFrequency: 'monthly' },
 ];
 
 export default async function sitemap() {

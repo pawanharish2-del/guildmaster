@@ -80,17 +80,17 @@ export default function Footer() {
 
           <div className="md:col-span-2">
             <h6 className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-6 text-white/40">Areas Served</h6>
-            <ul className="space-y-4 text-white/80 text-xs font-sans tracking-[0.15em] uppercase">
-              <li>
-                <a href="/locations/jaipur" className="hover-trigger hover:text-gold transition-colors">
-                  Jaipur
-                </a>
-              </li>
-              <li>
-                <a href="/locations/rajasthan" className="hover-trigger hover:text-gold transition-colors">
-                  Rajasthan
-                </a>
-              </li>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-4 text-white/80 text-[10px] font-sans tracking-[0.15em] uppercase">
+              <li><a href="/locations/ahmedabad" className="hover-trigger hover:text-gold transition-colors">Ahmedabad</a></li>
+              <li><a href="/locations/bengaluru" className="hover-trigger hover:text-gold transition-colors">Bengaluru</a></li>
+              <li><a href="/locations/chennai" className="hover-trigger hover:text-gold transition-colors">Chennai</a></li>
+              <li><a href="/locations/delhi" className="hover-trigger hover:text-gold transition-colors">Delhi</a></li>
+              <li><a href="/locations/hyderabad" className="hover-trigger hover:text-gold transition-colors">Hyderabad</a></li>
+              <li><a href="/locations/jaipur" className="hover-trigger hover:text-gold transition-colors">Jaipur</a></li>
+              <li><a href="/locations/kolkata" className="hover-trigger hover:text-gold transition-colors">Kolkata</a></li>
+              <li><a href="/locations/mumbai" className="hover-trigger hover:text-gold transition-colors">Mumbai</a></li>
+              <li><a href="/locations/pune" className="hover-trigger hover:text-gold transition-colors">Pune</a></li>
+              <li><a href="/locations/rajasthan" className="hover-trigger hover:text-gold transition-colors">Rajasthan</a></li>
             </ul>
           </div>
 
