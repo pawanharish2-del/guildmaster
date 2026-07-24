@@ -129,13 +129,13 @@ export default function JaipurLocationPage() {
           <article>
             <h2 className="text-3xl font-serif text-gold mb-6">Carbon Fiber Engineering & Sustainability</h2>
             <p className="mb-6">
-              The future of aviation is undeniably linked to advanced materials. As a leading manufacturer, our commitment to carbon fiber construction is what sets us apart. Unlike traditional aluminum structures, carbon fiber allows for the creation of complex, aerodynamically perfect shapes—like our signature elliptical wing.
+              The future of aviation is undeniably linked to advanced materials. As a leading manufacturer, our commitment to carbon fiber construction is what sets us apart. Unlike traditional aluminum structures, carbon fiber allows for the creation of complex, aerodynamically perfect shapes—like our signature elliptical wing. You can <a href="/blog" className="text-gold hover:text-white transition-colors underline decoration-gold/30 hover:decoration-white">read more on our blog</a> about how we build these.
             </p>
             <p className="mb-6">
               This structural advantage directly translates into fuel efficiency. By drastically reducing the overall weight of the aircraft, less engine power is required to maintain high cruise speeds. This not only lowers the aircraft's carbon footprint but also significantly reduces operating costs for owners in Jaipur.
             </p>
             <p>
-              When you decide to partner with the aircraft manufacturers near jaipur, you are investing in a machine that is as environmentally conscious as it is breathtakingly fast. It is a harmonious blend of sustainable engineering and uncompromising luxury, ready to take you wherever you need to go.
+              When you decide to partner with the aircraft manufacturers near jaipur, you are investing in a machine that is as environmentally conscious as it is breathtakingly fast. It is a harmonious blend of sustainable engineering and uncompromising luxury, ready to take you wherever you need to go. Looking for more options? Explore the <a href="/models/joey" className="text-gold hover:text-white transition-colors underline decoration-gold/30 hover:decoration-white">Joey</a> or the <a href="/models/boon" className="text-gold hover:text-white transition-colors underline decoration-gold/30 hover:decoration-white">Boon</a>, and <a href="/contact" className="text-gold hover:text-white transition-colors underline decoration-gold/30 hover:decoration-white">contact our sales team</a> today.
             </p>
           </article>
           

@@ -59,7 +59,7 @@ export default function BoonPage() {
               <h4 className="text-gold text-xl font-serif italic mb-12 text-reveal">Space meets Speed.</h4>
 
               <p className="text-muted text-sm leading-relaxed mb-12 text-reveal">
-                The Boon reimagines group travel with its revolutionary carbon fiber construction and spacious cabin. Optimized for the ultimate pilot experience, the cockpit boasts advanced avionics that deliver unmatched situational awareness and safety. Even with four adults on board, it retains extraordinary fuel efficiency and dynamic performance. Featuring a stunning luxury finish, this aircraft provides exceptional cross country capability, ensuring every passenger travels in absolute comfort.
+                The Boon reimagines group travel with its revolutionary carbon fiber construction and spacious cabin. Optimized for the ultimate pilot experience, the cockpit boasts advanced avionics that deliver unmatched situational awareness and safety. If you prefer a lighter, more agile aircraft, explore our <a href="/models/joey" className="text-gold hover:text-white transition-colors underline decoration-gold/30 hover:decoration-white">2-seater Joey</a>. Or, <a href="/contact" className="text-gold hover:text-white transition-colors underline decoration-gold/30 hover:decoration-white">contact our team</a> to start building your bespoke aircraft today.
               </p>
 
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 text-sm text-muted spec-anim">

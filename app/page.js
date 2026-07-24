@@ -125,8 +125,8 @@ export default function HomePage() {
           <h3 className="text-gold text-xs uppercase tracking-[0.3em] mb-8 text-reveal">More than just speed.</h3>
           <p className="text-muted max-w-2xl mx-auto text-lg font-light leading-relaxed text-reveal">
             Every aspect of our aircraft is carefully considered.<br />
-            We design, build and test almost everything ourselves.<br />
-            For those looking to <strong className="text-gold font-normal">buy luxury private aircraft in India</strong>, we offer an uncompromising experience.<br />
+            We design, build and test almost everything ourselves at our <Link href="/about" className="text-white hover:text-gold transition-colors underline decoration-white/30 hover:decoration-gold">manufacturing facility</Link>.<br />
+            For those looking to <strong className="text-gold font-normal">buy luxury private aircraft in India</strong>, we offer an uncompromising experience across <Link href="/locations/mumbai" className="text-white hover:text-gold transition-colors underline decoration-white/30 hover:decoration-gold">major hubs</Link>.<br />
             <span className="text-white font-serif italic mt-4 block">Our aircraft. Our passion.</span>
           </p>
         </div>
