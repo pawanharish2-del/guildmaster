@@ -1,4 +1,5 @@
 import { buildMetadata } from '@/lib/seo';
+import Link from 'next/link';
 
 export const metadata = buildMetadata({
   title: 'About Guildmaster | Aircraft Manufacturers Near Jaipur',
