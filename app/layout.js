@@ -49,6 +49,9 @@ export const metadata = {
     'Kishangarh aerospace',
     'India aircraft manufacturer',
   ],
+  verification: {
+    google: '4JifuKVYGW8An3nqV8CPEpV3t8eGjQAGMFLut_Yya1o',
+  },
 };
 
 export const viewport = {
