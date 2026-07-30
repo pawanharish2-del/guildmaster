@@ -3,6 +3,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import BlogForm from '@/components/admin/BlogForm';
+import HomepageForm from '@/components/admin/HomepageForm';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Guildmaster Console — Journal CMS
@@ -45,6 +46,7 @@ export default function AdminDashboard({ initialBlogs = [] }) {
   const [deletingId, setDeletingId] = useState(null);
   const [notice, setNotice] = useState(null); // { type: 'ok'|'err', text }
   const [loggingOut, setLoggingOut] = useState(false);
+  const [activeTab, setActiveTab] = useState('journal'); // 'journal' or 'homepage'
 
   const editingPost = typeof mode === 'object' && mode !== null ? mode : null;
   const formOpen = mode === 'new' || editingPost;
@@ -195,14 +197,16 @@ export default function AdminDashboard({ initialBlogs = [] }) {
 
       <main className="max-w-[1200px] mx-auto px-6 md:px-10 py-12">
         {/* ── Heading + primary action ──────────────────────────────────────── */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-6">
           <div>
-            <h1 className="font-serif text-4xl text-white mb-2">The Journal</h1>
+            <h1 className="font-serif text-4xl text-white mb-2">
+               {activeTab === 'journal' ? 'The Journal' : 'Homepage Configuration'}
+            </h1>
             <p className="text-muted text-sm">
-              {posts.length} {posts.length === 1 ? 'dispatch' : 'dispatches'} published.
+              {activeTab === 'journal' ? `${posts.length} ${posts.length === 1 ? 'dispatch' : 'dispatches'} published.` : 'Manage the content and images of your static homepage.'}
             </p>
           </div>
-          {!formOpen ? (
+          {activeTab === 'journal' && !formOpen ? (
             <button
               onClick={() => {
                 setMode('new');
@@ -213,6 +217,24 @@ export default function AdminDashboard({ initialBlogs = [] }) {
               <i className="fa-solid fa-plus mr-2" /> New Dispatch
             </button>
           ) : null}
+        </div>
+
+        {/* ── Tabs ──────────────────────────────────────────────────────────── */}
+        <div className="flex gap-8 border-b border-white/10 mb-10">
+           <button 
+             onClick={() => setActiveTab('journal')}
+             className={`pb-4 text-xs uppercase tracking-[0.2em] transition-colors relative ${activeTab === 'journal' ? 'text-gold' : 'text-white/40 hover:text-white/80'}`}
+           >
+             Journal
+             {activeTab === 'journal' && <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gold" />}
+           </button>
+           <button 
+             onClick={() => setActiveTab('homepage')}
+             className={`pb-4 text-xs uppercase tracking-[0.2em] transition-colors relative ${activeTab === 'homepage' ? 'text-gold' : 'text-white/40 hover:text-white/80'}`}
+           >
+             Homepage
+             {activeTab === 'homepage' && <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gold" />}
+           </button>
         </div>
 
         {/* ── Flash notice ──────────────────────────────────────────────────── */}
@@ -228,7 +250,12 @@ export default function AdminDashboard({ initialBlogs = [] }) {
           </div>
         ) : null}
 
-        {/* ── Editor ────────────────────────────────────────────────────────── */}
+        {/* ── Content ───────────────────────────────────────────────────────── */}
+        {activeTab === 'homepage' ? (
+          <HomepageForm />
+        ) : (
+          <>
+            {/* ── Editor ────────────────────────────────────────────────────────── */}
         {formOpen ? (
           <div className="mb-12">
             <BlogForm
@@ -331,6 +358,8 @@ export default function AdminDashboard({ initialBlogs = [] }) {
               );
             })}
           </div>
+        )}
+          </>
         )}
       </main>
     </div>

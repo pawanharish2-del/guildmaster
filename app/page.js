@@ -3,6 +3,8 @@ import Image from 'next/image';
 import ParticleCanvas from '@/components/ParticleCanvas';
 import HeroVideo from '@/components/HeroVideo';
 import { buildMetadata } from '@/lib/seo';
+import dbConnect from '@/lib/mongodb';
+import Homepage from '@/models/Homepage';
 
 export const metadata = buildMetadata({
   title: 'Buy Luxury 2 Seater & 4 Seater Aircraft in India | Guildmaster',
@@ -11,7 +13,52 @@ export const metadata = buildMetadata({
   path: '/',
 });
 
-export default function HomePage() {
+export default async function HomePage() {
+  let config = null;
+  try {
+    await dbConnect();
+    config = await Homepage.findOne({ singletonId: 'homepage_config' }).lean();
+  } catch (err) {
+    // Database unreachable, proceed with fallback
+  }
+
+  // Fallback defaults
+  if (!config) {
+    config = {
+      heroBannerImage: '/images/afterheroimage.jpg',
+      fullWidthImage: '/images/afterheroimage.jpg',
+      overviewHeading: 'Aircraft Overview',
+      overviewSubheading: 'Explore Our Fleet',
+      techHeading: 'Technology meets design',
+      techSubheading: 'More than just speed.',
+      techSubtext: 'Every aspect of our aircraft is carefully considered.\nWe design, build and test almost everything ourselves at our manufacturing facility.\nFor those looking to buy luxury private aircraft in India, we offer an uncompromising experience across major hubs.\nOur aircraft. Our passion.',
+      communityHeading: 'What\'s it like to fly the Guildmaster?',
+      communitySubheading: 'Experiences from our community.',
+      testimonials: [
+        {
+          quote: "We've been flying for more than 50 years. The Guildmaster aircraft replaced our previous aircraft for ecological reasons. It was the perfect transition without sacrificing safety, comfort, or performance. After several years we added another Guildmaster to the fleet because every flight exceeded expectations. We truly enjoy every journey.",
+          name: "Klaus & Marko",
+          role: "Fleet Owners",
+          avatarUrl: ""
+        },
+        {
+          quote: "The Guildmaster is a versatile and incredibly modern aircraft. It is forgiving, easy to fly, and performs exceptionally on shorter runways. At the same time, it is a fast and comfortable travelling machine with excellent range. Over the past four years I have visited 18 countries across Europe.",
+          name: "David Straadt",
+          role: "Senior Expert Farmer",
+          avatarUrl: ""
+        },
+        {
+          quote: "With Guildmaster it was love at first sight. Outstanding engineering. Excellent flying performance. Beautiful craftsmanship. Attention to every detail. It has significantly reduced operating costs while allowing me to fly more often than ever before.",
+          name: "Peter Sodermans",
+          role: "President AOPA Luxembourg",
+          avatarUrl: ""
+        }
+      ],
+      ctaHeading: 'Join the Fleet',
+      ctaSubheading: 'Want to make an inquiry or just have questions?'
+    };
+  }
+
   return (
     <>
       {/* HERO */}
@@ -19,7 +66,7 @@ export default function HomePage() {
         <ParticleCanvas id="webgl-canvas" />
         {/* Mobile Fallback Image (Shows if video autoplay is blocked) */}
         <Image
-          src="/images/afterheroimage.jpg"
+          src={config.heroBannerImage || "/images/afterheroimage.jpg"}
           alt="Guildmaster Hero"
           fill
           priority
@@ -48,7 +95,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gold/10 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] z-10 mix-blend-overlay pointer-events-none" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/afterheroimage.jpg"
+            src={config.fullWidthImage || "/images/afterheroimage.jpg"}
             loading="lazy"
             className="w-full h-full object-cover parallax-img image-reveal-anim"
             alt="Premium 4 Seater Aircraft Showcase"
@@ -59,8 +106,8 @@ export default function HomePage() {
       {/* AIRCRAFT OVERVIEW */}
       <section id="aircraft-overview" className="py-4 bg-bgSec relative z-30 border-t border-white/5">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 text-center mb-16">
-          <h2 className="text-gold font-serif text-4xl md:text-5xl split-text mb-4">Aircraft Overview</h2>
-          <h3 className="text-gold text-xs uppercase tracking-[0.3em] mb-8 text-reveal">Explore Our Fleet</h3>
+          <h2 className="text-gold font-serif text-4xl md:text-5xl split-text mb-4">{config.overviewHeading}</h2>
+          <h3 className="text-gold text-xs uppercase tracking-[0.3em] mb-8 text-reveal">{config.overviewSubheading}</h3>
         </div>
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 text-reveal">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -121,13 +168,10 @@ export default function HomePage() {
       {/* TECHNOLOGY SECTION */}
       <section className="py-4 bg-bgSec border-t border-white/5">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 text-center mb-20">
-          <h2 className="text-gold font-serif text-5xl md:text-6xl split-text mb-6">Technology meets design</h2>
-          <h3 className="text-gold text-xs uppercase tracking-[0.3em] mb-8 text-reveal">More than just speed.</h3>
-          <p className="text-muted max-w-2xl mx-auto text-lg font-light leading-relaxed text-reveal">
-            Every aspect of our aircraft is carefully considered.<br />
-            We design, build and test almost everything ourselves at our <Link href="/about" className="text-white hover:text-gold transition-colors underline decoration-white/30 hover:decoration-gold">manufacturing facility</Link>.<br />
-            For those looking to <strong className="text-gold font-normal">buy luxury private aircraft in India</strong>, we offer an uncompromising experience across <Link href="/locations/mumbai" className="text-white hover:text-gold transition-colors underline decoration-white/30 hover:decoration-gold">major hubs</Link>.<br />
-            <span className="text-white font-serif italic mt-4 block">Our aircraft. Our passion.</span>
+          <h2 className="text-gold font-serif text-5xl md:text-6xl split-text mb-6">{config.techHeading}</h2>
+          <h3 className="text-gold text-xs uppercase tracking-[0.3em] mb-8 text-reveal">{config.techSubheading}</h3>
+          <p className="text-muted max-w-2xl mx-auto text-lg font-light leading-relaxed text-reveal whitespace-pre-wrap">
+            {config.techSubtext}
           </p>
         </div>
 
@@ -219,8 +263,8 @@ export default function HomePage() {
       <section className="py-4 bg-bgBase overflow-hidden border-t border-white/5">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end">
           <div>
-            <h2 className="text-gold font-serif text-4xl md:text-5xl split-text mb-4">What&apos;s it like to fly the Guildmaster?</h2>
-            <h3 className="text-gold text-xs uppercase tracking-[0.3em] text-reveal">Experiences from our community.</h3>
+            <h2 className="text-gold font-serif text-4xl md:text-5xl split-text mb-4">{config.communityHeading}</h2>
+            <h3 className="text-gold text-xs uppercase tracking-[0.3em] text-reveal">{config.communitySubheading}</h3>
           </div>
 
           <div className="flex gap-4 mt-8 md:mt-0 opacity-80 image-reveal-anim">
@@ -232,35 +276,25 @@ export default function HomePage() {
         </div>
 
         <div className="flex gap-6 md:gap-10 px-6 md:px-12 w-max" id="testimonial-track">
-          <div className="glass w-[320px] md:w-[500px] p-8 md:p-12 rounded-sm shrink-0 border-t-2 border-t-gold/50">
-            <i className="fa-solid fa-quote-left text-gold text-2xl mb-6 opacity-50" />
-            <p className="text-sm md:text-lg font-serif italic mb-8 leading-relaxed text-white/90">&ldquo;We&apos;ve been flying for more than 50 years. The Guildmaster aircraft replaced our previous aircraft for ecological reasons. It was the perfect transition without sacrificing safety, comfort, or performance. After several years we added another Guildmaster to the fleet because every flight exceeded expectations. We truly enjoy every journey.&rdquo;</p>
-            <div className="flex items-center gap-4 border-t border-white/10 pt-6">
-              <div>
-                <h6 className="text-xs md:text-sm font-sans uppercase tracking-[0.2em] font-semibold">— Klaus &amp; Marko</h6>
+          {config.testimonials && config.testimonials.length > 0 ? (
+            config.testimonials.map((t, i) => (
+              <div key={i} className="glass w-[320px] md:w-[500px] p-8 md:p-12 rounded-sm shrink-0 border-t-2 border-t-gold/50">
+                <i className="fa-solid fa-quote-left text-gold text-2xl mb-6 opacity-50" />
+                <p className="text-sm md:text-lg font-serif italic mb-8 leading-relaxed text-white/90">&ldquo;{t.quote}&rdquo;</p>
+                <div className="flex items-center gap-4 border-t border-white/10 pt-6">
+                  {t.avatarUrl && (
+                    <img src={t.avatarUrl} alt={t.name} className="w-12 h-12 rounded-full object-cover grayscale opacity-80" />
+                  )}
+                  <div>
+                    <h6 className="text-xs md:text-sm font-sans uppercase tracking-[0.2em] font-semibold">— {t.name}</h6>
+                    {t.role && <span className="text-[10px] text-gold uppercase tracking-widest mt-1 block">{t.role}</span>}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="glass w-[320px] md:w-[500px] p-8 md:p-12 rounded-sm shrink-0 border-t-2 border-t-gold/50">
-            <i className="fa-solid fa-quote-left text-gold text-2xl mb-6 opacity-50" />
-            <p className="text-sm md:text-lg font-serif italic mb-8 leading-relaxed text-white/90">&ldquo;The Guildmaster is a versatile and incredibly modern aircraft. It is forgiving, easy to fly, and performs exceptionally on shorter runways. At the same time, it is a fast and comfortable travelling machine with excellent range. Over the past four years I have visited 18 countries across Europe.&rdquo;</p>
-            <div className="flex items-center gap-4 border-t border-white/10 pt-6">
-              <div>
-                <h6 className="text-xs md:text-sm font-sans uppercase tracking-[0.2em] font-semibold">— David Straadt</h6>
-                <span className="text-[10px] text-gold uppercase tracking-widest mt-1 block">Senior Expert Farmer</span>
-              </div>
-            </div>
-          </div>
-          <div className="glass w-[320px] md:w-[500px] p-8 md:p-12 rounded-sm shrink-0 border-t-2 border-t-gold/50">
-            <i className="fa-solid fa-quote-left text-gold text-2xl mb-6 opacity-50" />
-            <p className="text-sm md:text-lg font-serif italic mb-8 leading-relaxed text-white/90">&ldquo;With Guildmaster it was love at first sight. Outstanding engineering. Excellent flying performance. Beautiful craftsmanship. Attention to every detail. It has significantly reduced operating costs while allowing me to fly more often than ever before.&rdquo;</p>
-            <div className="flex items-center gap-4 border-t border-white/10 pt-6">
-              <div>
-                <h6 className="text-xs md:text-sm font-sans uppercase tracking-[0.2em] font-semibold">— Peter Sodermans</h6>
-                <span className="text-[10px] text-gold uppercase tracking-widest mt-1 block">President AOPA Luxembourg</span>
-              </div>
-            </div>
-          </div>
+            ))
+          ) : (
+            <p className="text-white/40">No testimonials available.</p>
+          )}
         </div>
       </section>
 
@@ -268,8 +302,8 @@ export default function HomePage() {
       <section id="contact-cta" className="py-4 bg-bgSec text-center relative overflow-hidden border-t border-white/5">
         <div className="absolute inset-0 bg-luxury-gradient z-0" />
         <div className="relative z-10 max-w-3xl mx-auto px-6">
-          <h2 className="text-gold font-serif text-5xl md:text-7xl split-text mb-6">Join the Fleet</h2>
-          <p className="text-muted text-lg font-light mb-10 text-reveal">Want to make an inquiry or just have questions?</p>
+          <h2 className="text-gold font-serif text-5xl md:text-7xl split-text mb-6">{config.ctaHeading}</h2>
+          <p className="text-muted text-lg font-light mb-10 text-reveal">{config.ctaSubheading}</p>
 
           <Link href="/contact" className="hover-trigger magnetic-btn px-12 py-5 rounded-full bg-gold group mb-20 inline-block">
             <span className="relative z-10 font-sans text-xs uppercase tracking-[0.2em] text-black font-semibold transition-colors duration-300">Contact Us</span>
