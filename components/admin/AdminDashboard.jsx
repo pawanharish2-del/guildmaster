@@ -164,203 +164,206 @@ export default function AdminDashboard({ initialBlogs = [] }) {
   }, [router]);
 
   return (
-    <div className="min-h-screen">
-      {/* ── Top bar ─────────────────────────────────────────────────────────── */}
-      <header className="border-b border-white/5 bg-bgSec/60 backdrop-blur sticky top-0 z-30">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <span className="text-gold text-[10px] uppercase tracking-[0.4em]">
+    <div className="flex h-screen bg-[#0a0a0a] text-white overflow-hidden font-sans">
+      {/* ── Sidebar ─────────────────────────────────────────────────────────── */}
+      <aside className="w-64 bg-[#111111] border-r border-white/5 flex flex-col justify-between shrink-0">
+        <div>
+          <div className="h-20 flex items-center px-8 border-b border-white/5">
+            <span className="text-gold text-[10px] uppercase tracking-[0.4em] font-semibold">
               Guildmaster
             </span>
-            <span className="text-white/20">/</span>
-            <span className="font-serif text-xl text-white">Console</span>
           </div>
-          <div className="flex items-center gap-3">
-            <a
-              href="/blogs"
-              target="_blank"
-              rel="noreferrer"
-              className="text-white/50 hover:text-gold text-[11px] uppercase tracking-[0.2em] transition-colors hidden sm:inline"
+          <nav className="p-4 space-y-2 mt-4">
+            <button 
+              onClick={() => { setActiveTab('journal'); setMode('idle'); setNotice(null); }}
+              className={`w-full flex items-center gap-3 px-4 py-3 text-[11px] uppercase tracking-[0.2em] rounded-sm transition-all ${
+                activeTab === 'journal' ? 'bg-gold/10 text-gold font-medium border border-gold/20' : 'text-white/50 hover:bg-white/5 hover:text-white border border-transparent'
+              }`}
             >
-              View Journal <i className="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]" />
-            </a>
-            <button
-              onClick={handleLogout}
-              disabled={loggingOut}
-              className="border border-white/10 hover:border-gold/60 text-white/70 hover:text-white text-[11px] uppercase tracking-[0.2em] px-5 py-2.5 rounded-sm transition-colors disabled:opacity-40"
-            >
-              {loggingOut ? 'Signing out…' : 'Sign out'}
+              <i className="fa-solid fa-book-open w-4 text-center" /> Journal
             </button>
-          </div>
-        </div>
-      </header>
-
-      <main className="max-w-[1200px] mx-auto px-6 md:px-10 py-12">
-        {/* ── Heading + primary action ──────────────────────────────────────── */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-6">
-          <div>
-            <h1 className="font-serif text-4xl text-white mb-2">
-               {activeTab === 'journal' ? 'The Journal' : 'Homepage Configuration'}
-            </h1>
-            <p className="text-muted text-sm">
-              {activeTab === 'journal' ? `${posts.length} ${posts.length === 1 ? 'dispatch' : 'dispatches'} published.` : 'Manage the content and images of your static homepage.'}
-            </p>
-          </div>
-          {activeTab === 'journal' && !formOpen ? (
-            <button
-              onClick={() => {
-                setMode('new');
-                setNotice(null);
-              }}
-              className="self-start sm:self-auto bg-gold-gradient text-black text-xs uppercase tracking-[0.25em] font-medium px-7 py-4 rounded-sm transition-opacity hover:opacity-90"
+            <button 
+              onClick={() => { setActiveTab('homepage'); setMode('idle'); setNotice(null); }}
+              className={`w-full flex items-center gap-3 px-4 py-3 text-[11px] uppercase tracking-[0.2em] rounded-sm transition-all ${
+                activeTab === 'homepage' ? 'bg-gold/10 text-gold font-medium border border-gold/20' : 'text-white/50 hover:bg-white/5 hover:text-white border border-transparent'
+              }`}
             >
-              <i className="fa-solid fa-plus mr-2" /> New Dispatch
+              <i className="fa-solid fa-home w-4 text-center" /> Homepage
             </button>
-          ) : null}
+          </nav>
         </div>
-
-        {/* ── Tabs ──────────────────────────────────────────────────────────── */}
-        <div className="flex gap-8 border-b border-white/10 mb-10">
-           <button 
-             onClick={() => setActiveTab('journal')}
-             className={`pb-4 text-xs uppercase tracking-[0.2em] transition-colors relative ${activeTab === 'journal' ? 'text-gold' : 'text-white/40 hover:text-white/80'}`}
-           >
-             Journal
-             {activeTab === 'journal' && <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gold" />}
-           </button>
-           <button 
-             onClick={() => setActiveTab('homepage')}
-             className={`pb-4 text-xs uppercase tracking-[0.2em] transition-colors relative ${activeTab === 'homepage' ? 'text-gold' : 'text-white/40 hover:text-white/80'}`}
-           >
-             Homepage
-             {activeTab === 'homepage' && <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gold" />}
-           </button>
-        </div>
-
-        {/* ── Flash notice ──────────────────────────────────────────────────── */}
-        {notice ? (
-          <div
-            className={`mb-8 rounded-sm px-5 py-4 text-sm border ${
-              notice.type === 'ok'
-                ? 'bg-gold/10 border-gold/30 text-goldLight'
-                : 'bg-red-500/10 border-red-500/25 text-red-200'
-            }`}
+        
+        <div className="p-4 border-t border-white/5">
+          <a
+            href="/"
+            target="_blank"
+            rel="noreferrer"
+            className="w-full flex items-center gap-3 px-4 py-3 text-[11px] uppercase tracking-[0.2em] rounded-sm text-white/50 hover:bg-white/5 hover:text-white transition-all mb-2 border border-transparent"
           >
-            {notice.text}
-          </div>
-        ) : null}
+            <i className="fa-solid fa-arrow-up-right-from-square w-4 text-center" /> View Site
+          </a>
+          <button
+            onClick={handleLogout}
+            disabled={loggingOut}
+            className="w-full flex items-center gap-3 px-4 py-3 text-[11px] uppercase tracking-[0.2em] rounded-sm text-white/50 hover:bg-red-500/10 hover:text-red-400 transition-all disabled:opacity-40 border border-transparent"
+          >
+            <i className="fa-solid fa-sign-out-alt w-4 text-center" /> {loggingOut ? 'Signing out…' : 'Sign out'}
+          </button>
+        </div>
+      </aside>
 
-        {/* ── Content ───────────────────────────────────────────────────────── */}
-        {activeTab === 'homepage' ? (
-          <HomepageForm />
-        ) : (
-          <>
-            {/* ── Editor ────────────────────────────────────────────────────────── */}
-        {formOpen ? (
-          <div className="mb-12">
-            <BlogForm
-              initial={editingPost}
-              onSubmit={handleSubmit}
-              onCancel={() => {
-                setMode('idle');
-                setNotice(null);
-              }}
-              submitting={submitting}
-            />
+      {/* ── Main Content Area ──────────────────────────────────────────────── */}
+      <main className="flex-1 overflow-y-auto bg-[#0a0a0a] relative">
+        <div className="max-w-[1200px] mx-auto px-8 lg:px-12 py-12">
+          
+          {/* ── Heading + primary action ──────────────────────────────────────── */}
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10 pb-8 border-b border-white/5">
+            <div>
+              <h1 className="font-serif text-3xl md:text-4xl text-white mb-2">
+                 {activeTab === 'journal' ? 'The Journal' : 'Homepage Configuration'}
+              </h1>
+              <p className="text-white/40 text-sm">
+                {activeTab === 'journal' ? `${posts.length} ${posts.length === 1 ? 'dispatch' : 'dispatches'} published.` : 'Manage the content and images of your static homepage.'}
+              </p>
+            </div>
+            {activeTab === 'journal' && !formOpen ? (
+              <button
+                onClick={() => {
+                  setMode('new');
+                  setNotice(null);
+                }}
+                className="self-start sm:self-auto bg-gold-gradient text-black text-[10px] uppercase tracking-[0.25em] font-medium px-6 py-3.5 rounded-sm transition-all hover:opacity-90 shadow-lg shadow-gold/10 hover:shadow-gold/20"
+              >
+                <i className="fa-solid fa-plus mr-2" /> New Dispatch
+              </button>
+            ) : null}
           </div>
-        ) : null}
 
-        {/* ── List ──────────────────────────────────────────────────────────── */}
-        {sorted.length === 0 ? (
-          <div className="glass rounded-sm p-16 text-center border-l-4 border-gold">
-            <i className="fa-solid fa-plane text-gold/30 text-4xl -rotate-90 mb-6 block" />
-            <h3 className="font-serif text-2xl text-white mb-3">No dispatches yet</h3>
-            <p className="text-muted text-sm max-w-md mx-auto">
-              Publish the first article to bring the Journal to life. It will appear
-              instantly on the public listing.
-            </p>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {sorted.map((post) => {
-              const isBusy = deletingId === post.id;
-              const isBeingEdited = editingPost && editingPost.id === post.id;
-              return (
-                <article
-                  key={post.id}
-                  className={`glass rounded-sm border-l-2 transition-colors ${
-                    isBeingEdited ? 'border-gold' : 'border-gold/20 hover:border-gold/50'
-                  }`}
-                >
-                  <div className="p-6 md:p-7 flex flex-col md:flex-row md:items-center gap-5">
-                    {/* thumb */}
-                    <div className="w-full md:w-40 shrink-0 aspect-[16/9] rounded-sm overflow-hidden bg-black/40 border border-white/5">
-                      {post.coverImage ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={post.coverImage}
-                          alt={post.title}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <i className="fa-solid fa-plane text-gold/25 text-xl -rotate-90" />
-                        </div>
-                      )}
-                    </div>
+          {/* ── Flash notice ──────────────────────────────────────────────────── */}
+          {notice ? (
+            <div
+              className={`mb-8 rounded-sm px-5 py-4 text-sm border ${
+                notice.type === 'ok'
+                  ? 'bg-gold/10 border-gold/30 text-goldLight'
+                  : 'bg-red-500/10 border-red-500/25 text-red-200'
+              }`}
+            >
+              {notice.text}
+            </div>
+          ) : null}
 
-                    {/* meta */}
-                    <div className="flex-grow min-w-0">
-                      <div className="flex items-center gap-3 mb-1.5">
-                        <span className="text-[10px] text-gold uppercase tracking-[0.2em]">
-                          {formatDate(post.createdAt)}
-                        </span>
-                        <span className="text-white/20 text-[10px]">/blogs/{post.slug}</span>
+          {/* ── Content ───────────────────────────────────────────────────────── */}
+          {activeTab === 'homepage' ? (
+            <HomepageForm />
+          ) : (
+            <>
+              {/* ── Editor ────────────────────────────────────────────────────────── */}
+          {formOpen ? (
+            <div className="mb-12">
+              <BlogForm
+                initial={editingPost}
+                onSubmit={handleSubmit}
+                onCancel={() => {
+                  setMode('idle');
+                  setNotice(null);
+                }}
+                submitting={submitting}
+              />
+            </div>
+          ) : null}
+
+          {/* ── List ──────────────────────────────────────────────────────────── */}
+          {sorted.length === 0 ? (
+            <div className="bg-[#111] border border-white/5 rounded-sm p-16 text-center shadow-2xl">
+              <i className="fa-solid fa-plane text-gold/30 text-4xl -rotate-90 mb-6 block" />
+              <h3 className="font-serif text-2xl text-white mb-3">No dispatches yet</h3>
+              <p className="text-white/40 text-sm max-w-md mx-auto">
+                Publish the first article to bring the Journal to life. It will appear
+                instantly on the public listing.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {sorted.map((post) => {
+                const isBusy = deletingId === post.id;
+                const isBeingEdited = editingPost && editingPost.id === post.id;
+                return (
+                  <article
+                    key={post.id}
+                    className={`bg-[#111] rounded-sm transition-all duration-300 shadow-lg border-l-2 ${
+                      isBeingEdited ? 'border-gold shadow-gold/5 bg-[#141414]' : 'border-gold/20 hover:border-gold/50 hover:bg-[#141414]'
+                    }`}
+                  >
+                    <div className="p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-6">
+                      {/* thumb */}
+                      <div className="w-full md:w-40 shrink-0 aspect-[16/9] rounded-sm overflow-hidden bg-black/40 border border-white/5">
+                        {post.coverImage ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={post.coverImage}
+                            alt={post.title}
+                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <i className="fa-solid fa-plane text-gold/25 text-xl -rotate-90" />
+                          </div>
+                        )}
                       </div>
-                      <h3 className="font-serif text-xl text-white truncate">{post.title}</h3>
-                      <p className="text-muted text-sm mt-1.5 line-clamp-2">{post.summary}</p>
-                    </div>
 
-                    {/* actions */}
-                    <div className="flex md:flex-col lg:flex-row items-center gap-2 shrink-0">
-                      <a
-                        href={`/blogs/${post.slug}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-center border border-white/10 hover:border-gold/60 text-white/70 hover:text-white text-[10px] uppercase tracking-[0.2em] px-4 py-2.5 rounded-sm transition-colors"
-                        title="View"
-                      >
-                        View
-                      </a>
-                      <button
-                        onClick={() => {
-                          setMode(post);
-                          setNotice(null);
-                          if (typeof window !== 'undefined') {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                          }
-                        }}
-                        disabled={isBusy}
-                        className="border border-gold/40 hover:border-gold text-goldLight text-[10px] uppercase tracking-[0.2em] px-4 py-2.5 rounded-sm transition-colors disabled:opacity-40"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => handleDelete(post)}
-                        disabled={isBusy}
-                        className="border border-red-500/25 hover:border-red-400/60 text-red-300/80 hover:text-red-200 text-[10px] uppercase tracking-[0.2em] px-4 py-2.5 rounded-sm transition-colors disabled:opacity-40"
-                      >
-                        {isBusy ? '…' : 'Delete'}
-                      </button>
+                      {/* meta */}
+                      <div className="flex-grow min-w-0">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="text-[10px] text-gold uppercase tracking-[0.2em] font-medium">
+                            {formatDate(post.createdAt)}
+                          </span>
+                          <span className="text-white/20 text-[10px]">/blogs/{post.slug}</span>
+                        </div>
+                        <h3 className="font-serif text-xl text-white/90 truncate">{post.title}</h3>
+                        <p className="text-white/40 text-sm mt-1.5 line-clamp-2 leading-relaxed">{post.summary}</p>
+                      </div>
+
+                      {/* actions */}
+                      <div className="flex md:flex-col lg:flex-row items-center gap-2 shrink-0">
+                        <a
+                          href={`/blogs/${post.slug}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-center border border-white/10 hover:border-gold/50 text-white/50 hover:text-white text-[10px] uppercase tracking-[0.2em] px-4 py-2.5 rounded-sm transition-all hover:bg-white/5"
+                          title="View"
+                        >
+                          View
+                        </a>
+                        <button
+                          onClick={() => {
+                            setMode(post);
+                            setNotice(null);
+                            if (typeof window !== 'undefined') {
+                              window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                          }}
+                          disabled={isBusy}
+                          className="border border-gold/30 hover:border-gold text-gold/80 hover:text-gold text-[10px] uppercase tracking-[0.2em] px-4 py-2.5 rounded-sm transition-all hover:bg-gold/5 disabled:opacity-40"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(post)}
+                          disabled={isBusy}
+                          className="border border-red-500/20 hover:border-red-500/50 text-red-400/70 hover:text-red-300 text-[10px] uppercase tracking-[0.2em] px-4 py-2.5 rounded-sm transition-all hover:bg-red-500/5 disabled:opacity-40"
+                        >
+                          {isBusy ? '…' : 'Delete'}
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        )}
-          </>
-        )}
+                  </article>
+                );
+              })}
+            </div>
+          )}
+            </>
+          )}
+        </div>
       </main>
     </div>
   );

@@ -71,21 +71,21 @@ export default function HomepageForm() {
   if (!data) return null;
 
   const InputGroup = ({ label, value, onChange, textarea }) => (
-    <div className="mb-4">
-      <label className="block text-[10px] uppercase tracking-[0.2em] text-gold mb-2">{label}</label>
+    <div className="mb-5">
+      <label className="block text-[10px] uppercase tracking-[0.2em] text-white/50 mb-2 font-medium">{label}</label>
       {textarea ? (
         <textarea
           value={value || ''}
           onChange={(e) => onChange(e.target.value)}
           rows={3}
-          className="w-full bg-black/40 border border-white/10 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-gold/50 transition-colors"
+          className="w-full bg-[#1a1a1a] border border-white/5 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/50 transition-all placeholder-white/20"
         />
       ) : (
         <input
           type="text"
           value={value || ''}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full bg-black/40 border border-white/10 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-gold/50 transition-colors"
+          className="w-full bg-[#1a1a1a] border border-white/5 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/50 transition-all placeholder-white/20"
         />
       )}
     </div>
@@ -102,7 +102,7 @@ export default function HomepageForm() {
       <form onSubmit={handleSubmit} className="space-y-8">
         
         {/* Images */}
-        <section className="glass p-8 rounded-sm border-t-2 border-gold/50">
+        <section className="bg-[#111] p-8 rounded-sm border border-white/5 shadow-lg">
           <h3 className="font-serif text-2xl text-white mb-6">Images</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <InputGroup label="Hero Banner Image URL" value={data.heroBannerImage} onChange={(val) => handleChange('heroBannerImage', val)} />
@@ -111,7 +111,7 @@ export default function HomepageForm() {
         </section>
 
         {/* Aircraft Overview */}
-        <section className="glass p-8 rounded-sm border-t-2 border-gold/50">
+        <section className="bg-[#111] p-8 rounded-sm border border-white/5 shadow-lg">
           <h3 className="font-serif text-2xl text-white mb-6">Aircraft Overview</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <InputGroup label="Heading" value={data.overviewHeading} onChange={(val) => handleChange('overviewHeading', val)} />
@@ -120,7 +120,7 @@ export default function HomepageForm() {
         </section>
 
         {/* Technology */}
-        <section className="glass p-8 rounded-sm border-t-2 border-gold/50">
+        <section className="bg-[#111] p-8 rounded-sm border border-white/5 shadow-lg">
           <h3 className="font-serif text-2xl text-white mb-6">Technology Section</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <InputGroup label="Heading" value={data.techHeading} onChange={(val) => handleChange('techHeading', val)} />
@@ -132,24 +132,24 @@ export default function HomepageForm() {
         </section>
 
         {/* Community */}
-        <section className="glass p-8 rounded-sm border-t-2 border-gold/50">
+        <section className="bg-[#111] p-8 rounded-sm border border-white/5 shadow-lg">
           <h3 className="font-serif text-2xl text-white mb-6">Community Section</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <InputGroup label="Heading" value={data.communityHeading} onChange={(val) => handleChange('communityHeading', val)} />
             <InputGroup label="Subheading" value={data.communitySubheading} onChange={(val) => handleChange('communitySubheading', val)} />
           </div>
 
-          <div className="border-t border-white/10 pt-8">
+          <div className="border-t border-white/5 pt-8">
             <div className="flex justify-between items-center mb-6">
                <h4 className="font-serif text-xl text-white">Testimonials</h4>
-               <button type="button" onClick={addTestimonial} className="text-[10px] uppercase tracking-[0.2em] text-gold hover:text-white transition-colors">
+               <button type="button" onClick={addTestimonial} className="text-[10px] uppercase tracking-[0.2em] text-gold hover:text-goldLight transition-colors">
                  + Add Testimonial
                </button>
             </div>
             
             <div className="space-y-6">
               {data.testimonials.map((t, i) => (
-                <div key={i} className="bg-black/20 border border-white/5 p-6 rounded-sm relative">
+                <div key={i} className="bg-[#1a1a1a] border border-white/5 p-6 rounded-sm relative">
                   <button type="button" onClick={() => removeTestimonial(i)} className="absolute top-4 right-4 text-white/30 hover:text-red-400 transition-colors">
                     <i className="fa-solid fa-times" />
                   </button>
@@ -169,7 +169,7 @@ export default function HomepageForm() {
         </section>
 
         {/* CTA */}
-        <section className="glass p-8 rounded-sm border-t-2 border-gold/50">
+        <section className="bg-[#111] p-8 rounded-sm border border-white/5 shadow-lg">
           <h3 className="font-serif text-2xl text-white mb-6">CTA Section</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <InputGroup label="Heading" value={data.ctaHeading} onChange={(val) => handleChange('ctaHeading', val)} />
@@ -177,11 +177,11 @@ export default function HomepageForm() {
           </div>
         </section>
 
-        <div className="flex justify-end pt-4">
+        <div className="flex justify-end pt-4 pb-12">
           <button
             type="submit"
             disabled={saving}
-            className="bg-gold-gradient text-black text-xs uppercase tracking-[0.25em] font-medium px-8 py-4 rounded-sm transition-opacity hover:opacity-90 disabled:opacity-50"
+            className="bg-gold-gradient text-black text-[10px] uppercase tracking-[0.25em] font-medium px-8 py-4 rounded-sm transition-all hover:opacity-90 disabled:opacity-50 shadow-lg shadow-gold/10 hover:shadow-gold/20"
           >
             {saving ? 'Saving...' : 'Save Configuration'}
           </button>

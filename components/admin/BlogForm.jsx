@@ -146,7 +146,7 @@ export default function BlogForm({ initial, onSubmit, onCancel, submitting }) {
         {/* ── MAIN COLUMN (2/3) ─────────────────────────────────────────────── */}
         <div className="lg:col-span-2 space-y-8">
           
-          <div className="glass rounded-sm p-8 border-t-2 border-gold/40">
+          <div className="bg-[#111] border border-white/5 shadow-lg rounded-sm p-8">
             {/* Title */}
             <div className="mb-8">
               <label htmlFor="bf-title" className={labelBase}>Article Title</label>
@@ -181,7 +181,7 @@ export default function BlogForm({ initial, onSubmit, onCancel, submitting }) {
                   className={fieldBase + ' flex-1'}
                   placeholder="https://... or /images/..."
                 />
-                <label className="bg-white/5 border border-white/10 hover:border-gold/50 text-white/80 text-[10px] uppercase tracking-[0.2em] px-6 py-3.5 rounded-sm transition-colors whitespace-nowrap cursor-pointer">
+                <label className="bg-[#1a1a1a] border border-white/10 hover:border-gold/50 text-white/80 text-[10px] uppercase tracking-[0.2em] px-6 py-3.5 rounded-sm transition-colors whitespace-nowrap cursor-pointer">
                   <i className="fa-solid fa-cloud-arrow-up mr-2" /> Upload
                   <input 
                     type="file"
@@ -217,7 +217,7 @@ export default function BlogForm({ initial, onSubmit, onCancel, submitting }) {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full bg-gold-gradient text-black text-sm uppercase tracking-[0.25em] font-medium px-8 py-5 rounded-sm transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed shadow-xl shadow-gold/10"
+            className="w-full bg-gold-gradient text-black text-[10px] uppercase tracking-[0.25em] font-medium px-8 py-4 rounded-sm transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-gold/10 hover:shadow-gold/20"
           >
             {submitting ? 'Saving to Database…' : isEdit ? 'Update Post & Metadata' : 'Publish Post'}
           </button>
@@ -228,7 +228,7 @@ export default function BlogForm({ initial, onSubmit, onCancel, submitting }) {
         <div className="lg:col-span-1 space-y-6">
           
           {/* URL Slug (System) */}
-          <div className="glass rounded-sm p-6 border border-white/5">
+          <div className="bg-[#111] border border-white/5 shadow-lg rounded-sm p-6">
             <h3 className="font-serif text-lg text-white mb-4">Routing</h3>
             <label htmlFor="bf-slug" className={labelBase}>
               URL Slug <span className="text-white/25 normal-case tracking-normal">(auto-derived)</span>
@@ -247,7 +247,7 @@ export default function BlogForm({ initial, onSubmit, onCancel, submitting }) {
           </div>
 
           {/* SEO Card */}
-          <div className="glass rounded-sm p-6 border-l-2 border-[#4285F4]">
+          <div className="bg-[#111] border border-white/5 shadow-lg rounded-sm p-6 border-l-2 border-l-[#4285F4]">
             <div className="flex items-center gap-2 mb-4">
               <i className="fa-brands fa-google text-[#4285F4]" />
               <h3 className="font-serif text-lg text-white">SEO Settings</h3>
@@ -286,7 +286,7 @@ export default function BlogForm({ initial, onSubmit, onCancel, submitting }) {
           </div>
 
           {/* AEO Card */}
-          <div className="glass rounded-sm p-6 border-l-2 border-[#10a37f]">
+          <div className="bg-[#111] border border-white/5 shadow-lg rounded-sm p-6 border-l-2 border-l-[#10a37f]">
             <div className="flex items-center gap-2 mb-4">
               <i className="fa-solid fa-robot text-[#10a37f]" />
               <h3 className="font-serif text-lg text-white">Answer Engine (AEO)</h3>
@@ -317,7 +317,7 @@ export default function BlogForm({ initial, onSubmit, onCancel, submitting }) {
                   value={form.summary}
                   onChange={(e) => update('summary', e.target.value)}
                   rows={4}
-                  className={fieldBase + ' resize-none border-[#10a37f]/20 focus:border-[#10a37f]'}
+                  className={fieldBase + ' resize-none focus:border-[#10a37f]/50 focus:ring-1 focus:ring-[#10a37f]/50'}
                   placeholder="Direct, factual 40-50 word answer optimized for AI extraction."
                 />
               </div>
@@ -325,7 +325,7 @@ export default function BlogForm({ initial, onSubmit, onCancel, submitting }) {
           </div>
 
           {/* GEO Card */}
-          <div className="glass rounded-sm p-6 border-l-2 border-[#a855f7]">
+          <div className="bg-[#111] border border-white/5 shadow-lg rounded-sm p-6 border-l-2 border-l-[#a855f7]">
             <div className="flex items-center gap-2 mb-4">
               <i className="fa-solid fa-network-wired text-[#a855f7]" />
               <h3 className="font-serif text-lg text-white">Generative Engine (GEO)</h3>
