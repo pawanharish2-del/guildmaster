@@ -35,9 +35,9 @@ export default function FlightCursor() {
 
     // Direct hardware-accelerated rendering loop (bypasses Next.js router blocks)
     const render = () => {
-      // Smooth interpolation for the outline (lerp)
-      currentPos.current.x += (targetPos.current.x - currentPos.current.x) * 0.2;
-      currentPos.current.y += (targetPos.current.y - currentPos.current.y) * 0.2;
+      // Smooth interpolation for the outline (lerp) - increased for faster tracking
+      currentPos.current.x += (targetPos.current.x - currentPos.current.x) * 0.5;
+      currentPos.current.y += (targetPos.current.y - currentPos.current.y) * 0.5;
 
       // Force GPU translate3d without repaints
       dot.style.transform = `translate3d(calc(${targetPos.current.x}px - 50%), calc(${targetPos.current.y}px - 50%), 0)`;
