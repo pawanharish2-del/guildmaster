@@ -2,9 +2,9 @@ import { buildMetadata } from '@/lib/seo';
 import Link from 'next/link';
 
 export const metadata = buildMetadata({
-  title: 'About Guildmaster | Aircraft Manufacturers Near Jaipur',
+  title: 'About Guildmaster | Best Aircraft Manufacturers',
   description:
-    'Based in Kishangarh, Rajasthan, Guildmaster is a leading aircraft manufacturer near Jaipur designing, building, and testing premium carbon fiber aircraft in-house.',
+    'Based in Kishangarh, Rajasthan, Guildmaster is a leading aircraft manufacturer designing, building, and testing the best premium carbon fiber aircraft in-house.',
   path: '/about',
 });
 

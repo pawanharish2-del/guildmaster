@@ -34,10 +34,7 @@ export const metadata = {
     default: `${SITE_NAME} | ${SITE_TAGLINE}`,
     template: `%s | ${SITE_NAME}`,
   },
-  icons: {
-    icon: '/logonew.png',
-    apple: '/logonew.png',
-  },
+
   keywords: [
     'Guildmaster',
     'light aircraft',
