@@ -15,8 +15,6 @@ const STATIC_ROUTES = [
   { path: '/investors', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/contact', priority: 0.6, changeFrequency: 'yearly' },
   { path: '/blog', priority: 0.8, changeFrequency: 'weekly' },
-  { path: '/locations/jaipur', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/locations/rajasthan', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/locations/ahmedabad', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/locations/bengaluru', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/locations/chennai', priority: 0.7, changeFrequency: 'monthly' },
