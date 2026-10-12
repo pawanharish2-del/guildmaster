@@ -110,7 +110,18 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 text-[10px] tracking-[0.2em] text-white/30 uppercase text-center md:text-left">
-          <p>&copy; 2026 GUILDMASTER Aviation. All Rights Reserved.</p>
+          <p>
+            &copy; 2026 GUILD MASTER Aviation. All Rights Reserved. Designed &amp; Developed by{' '}
+            <a
+              href="https://amazingit.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover-trigger hover:text-gold transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-gold"
+            >
+              Amazing IT
+            </a>
+            .
+          </p>
         </div>
       </div>
     </footer>
